@@ -5,7 +5,9 @@ import { Env } from "../env";
 
 export const getDb = (env: Env) => {
   const config = {
-    url: env.DB_URL,
+    host: env.DATABASE_HOST,
+    username: env.DATABASE_USERNAME,
+    password: env.DATABASE_PASSWORD,
   };
   return drizzle(connect(config));
 };
