@@ -8,6 +8,11 @@ export const getDb = (env: Env) => {
     host: env.DATABASE_HOST,
     username: env.DATABASE_USERNAME,
     password: env.DATABASE_PASSWORD,
+    //  @ts-ignore
+    fetch: (url, init) => {
+      delete init["cache"];
+      return fetch(url, init);
+    },
   };
   return drizzle(connect(config));
 };
